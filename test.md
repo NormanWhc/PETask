@@ -1,93 +1,44 @@
-## h2
+## This is a h2 header
 
-#### h4
+#### This is a h4 header
 
-https://github.com/xia-yulong/PETask/blob/main/README.md
+[查看另一个文件请点击](https://github.com/xia-yulong/PETask/blob/main/README.md)
 
-https://www.jlu.edu.cn/
+[这是吉大官网](https://www.jlu.edu.cn/)
 
-https://img2.baidu.com/it/u=3024878745,545382191&fm=26&fmt=auto&gp=0.jpg
+## web上的图片：
+
+![](https://img2.baidu.com/it/u=3024878745,545382191&fm=26&fmt=auto&gp=0.jpg)
+
+![本地图片]()
 
 code block：
 
-#define DEBUG
+```C++
+cout<<"吉林大学计算机科学与技术学院"<<endl;
+```
 
-#include <stdlib.h>
+> this is a quote
+ 
 
-#ifdef DEBUG
-#include <stdio.h>
-#endif
-
-#define __malloc(x) malloc(x)
-#define __free(x) free(x)
-#define __assert(x)
+-数据结构
+-计算机网络
+-计算机组成原理
 
 
-#ifdef DEBUG
-static void __kmp_test(unsigned char *W, unsigned int wlen, unsigned int *T)
-{
-    unsigned int i=0;
-    printf("i:\tW[i]\tT[i]\n");
-    while (i < wlen) {
-        printf("%d:\t%c\t%d\n", i, W[i], T[i]);
-        i++;
-    }
-}
-#endif
+1.408
+2.935
+3.912
 
-static void __kmp_table(unsigned char *W, unsigned int wlen, unsigned int *T)
-{
-    unsigned int pos=2, cnd=0;
-    T[0]=-1;
-    T[1]=0;
-    while (pos < wlen) {
-        if (W[pos-1] == W[cnd]){
-            cnd = cnd+1;
-            T[pos] = cnd;
-            pos = pos+1;
-        }
-        else if (cnd > 0) {
-            cnd = T[cnd];
-        }
-        else {
-            T[pos]=0;
-            pos=pos+1;
-        }
-    }
-}
+| 学生姓名 | 学号 | 性别 |
+| -------- | ---- | ---- |
+| 张*     | 6885 | 男   |
+| 李*     | 7989 | 男   |
+| 王*     | 5635 | 男   |
 
-unsigned int kmp_search(unsigned char *S, unsigned int slen,
-                        unsigned char *W, unsigned int wlen)
-{
-    unsigned int m=0, i=0;
-    unsigned int *T;
-    __assert(S && W);
-    
-    T = (unsigned int*)__malloc(wlen * sizeof(unsigned int));
-    __assert(T);
-    __kmp_table(W, wlen, T);
 
-#ifdef DEBUG
-    __kmp_test(W, wlen, T);
-#endif
+**这是粗体文字**
 
-    while (m+i < slen) {
-        if (W[i] == S[m+i]) {
-            if (i == wlen-1)
-            {
-                __free(T);
-                return m;
-            }
-            i = i+1;
-        }
-        else {
-            m = m+i-T[i];
-            if (T[i] > -1)
-                i = T[i];
-            else
-                i = 0;
-        }
-    }
-    __free(T);
-    return slen;
-}
+*这是斜体文字*
+
+~~这是划线句~~
